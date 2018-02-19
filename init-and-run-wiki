@@ -1,0 +1,43 @@
+#!/bin/sh
+
+set -e
+
+if [ ! -d /var/lib/tiddlywiki/mywiki ]; then
+  tiddlywiki mywiki --init server
+fi
+
+if [ -z "$TW_PORT" ] ; then
+  TW_PORT="8080"
+fi
+
+if [ -z "$TW_HOST" ] ; then
+  TW_HOST="0.0.0.0"
+fi
+
+exec tiddlywiki mywiki --server "$TW_PORT" "$TW_ROOTTIDDLER" "$TW_RENDERTYPE" "$TW_SERVETYPE" "$TW_USERNAME" "$TW_PASSWORD" "$TW_HOST" "$TW_PATHPREFIX"
+
+#--server <port> <roottiddler> <rendertype> <servetype> <username> <password>
+#<host> <pathprefix>
+#
+#The parameters are:
+#
+#* port - port number to serve from (defaults to "8080")
+#
+#* roottiddler - the tiddler to serve at the root (defaults to
+#  "$:/core/save/all")
+#
+#* rendertype - the content type to which the root tiddler should be rendered
+#  (defaults to "text/plain")
+#
+#* servetype - the content type with which the root tiddler should be served
+#  (defaults to "text/html")
+#
+#* username - the default username for signing edits
+#
+#* password - optional password for basic authentication
+#
+#* host - optional hostname to serve from (defaults to "127.0.0.1" aka
+#  "localhost")
+#
+#* pathprefix - optional prefix for paths
+
