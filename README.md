@@ -5,13 +5,16 @@ TiddlyWiki Docker image.
 ## Manual Execution
 
 ```
-$ docker run -p 8080:8080 nicolaw/tiddlywiki
+$ docker run -p 8080:8080 --name mywiki nicolaw/tiddlywiki
 ```
 
 ## Custom Username
 
 ```
-$ docker run -p 8080:8080 -e "TW_USERNAME=$USER" -e "TW_PASSWORD=hunter2" nicolaw/tiddlywiki
+$ docker run -p 8080:8080 \
+    -e "TW_USERNAME=$USER" \
+    -e "TW_PASSWORD=hunter2" \
+    --name mywiki nicolaw/tiddlywiki
 ```
 
 ## SystemD Service
