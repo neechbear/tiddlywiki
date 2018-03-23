@@ -1,2 +1,8 @@
 # tiddlywiki
-TiddlyWiki Docker image
+
+TiddlyWiki Docker image.
+
+```
+$ docker run nicolaw/tiddlywiki
+```
+
