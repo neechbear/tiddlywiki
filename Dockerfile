@@ -1,8 +1,8 @@
 # MIT License
 # Copyright (c) 2017 Nicola Worthington <nicolaw@tfb.net>
 
-LABEL author="Nicola Worthington <nicolaw@tfb.net>"
 FROM node:9.5.0-alpine
+LABEL author="Nicola Worthington <nicolaw@tfb.net>"
 
 VOLUME /var/lib/tiddlywiki
 WORKDIR /var/lib/tiddlywiki

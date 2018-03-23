@@ -1,0 +1,11 @@
+[Service]
+ExecStart=/usr/bin/docker run -p 8080:8080 --name=tiddlywiki neechbear/tiddlywiki
+ExecStop=/usr/bin/docker run  --name=docker-compose \
+                              --rm --env-file env-file \
+                              -v /var/run/docker.sock:/var/run/docker.sock \
+                              -v "/home/tiddlywiki/docker:/rootfs/home/tiddlywiki/docker" \
+                              -w "/rootfs/home/tiddlywiki/docker" \
+                              docker/compose:1.19.0 \
+                              down
+RestartSec=15
+Restart=always
