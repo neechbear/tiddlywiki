@@ -31,7 +31,8 @@ $ sudo journalctl -u tiddlywiki.service
 ### SystemD with Custom Username
 
 As above, but you will need to modify the `tiddlywiki.service` file to add an
-`--env-file` argument to the `ExecStart=/usr/sbin/docker` command:
+`--env-file` argument to the `ExecStart=/usr/sbin/docker` command (all on one
+line):
 
 ```
 ExecStart=/usr/bin/docker run -p 8080:8080 --env-file /etc/tiddlywiki/%n.conf -v
