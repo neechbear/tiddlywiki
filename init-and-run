@@ -1,0 +1,32 @@
+#!/bin/sh
+# MIT License
+# Copyright (c) 2017 Nicola Worthington <nicolaw@tfb.net>
+
+# Refer to the canonical online documentation for help.
+# - https://tiddlywiki.com/static/Using%2520TiddlyWiki%2520on%2520Node.js.html
+# - https://tiddlywiki.com/static/ServerCommand.html
+
+set -e
+
+main () {
+  TW_WIKINAME="$1"
+  if [ -z "$TW_WIKINAME" ]; then
+    TW_WIKINAME="mywiki"
+  fi
+
+  if [ ! -d "/var/lib/tiddlywiki/$TW_WIKINAME" ]; then
+    tiddlywiki "$TW_WIKINAME" --init server
+  fi
+
+  exec tiddlywiki "$TW_WIKINAME" --server \
+    "$TW_PORT" \
+    "$TW_ROOTTIDDLER" \
+    "$TW_RENDERTYPE" \
+    "$TW_SERVETYPE" \
+    "$TW_USERNAME" \
+    "$TW_PASSWORD" \
+    "$TW_HOST" \
+    "$TW_PATHPREFIX"
+}
+
+main "$@"
