@@ -40,3 +40,22 @@ $ sudo vi /etc/tiddlywiki/tiddlywiki.service.conf
 $ sudo systemctl daemon-reload
 $ sudo systemctl restart tiddlywiki.service
 ```
+
+## Configurable Variables
+
+Refer to the canonical online documentation for help for additional help.
+
+* https://tiddlywiki.com/static/Using%2520TiddlyWiki%2520on%2520Node.js.html
+* https://tiddlywiki.com/static/ServerCommand.html
+
+```
+TW_USERNAME="anonymous"
+TW_PASSWORD=""
+TW_PORT="8080"
+TW_WIKINAME="mywiki"
+TW_ROOTTIDDLER="$:/core/save/all"
+TW_RENDERTYPE="text/plain"
+TW_SERVETYPE="text/html"
+TW_HOST="0.0.0.0"
+TW_PATHPREFIX=""
+```
