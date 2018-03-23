@@ -10,6 +10,7 @@ RUN npm install -g tiddlywiki
 
 EXPOSE 8080
 
+ENV TW_WIKINAME mywiki
 ENV TW_PORT 8080
 ENV TW_ROOTTIDDLER $:/core/save/all
 ENV TW_RENDERTYPE text/plain

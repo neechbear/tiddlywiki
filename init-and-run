@@ -18,7 +18,7 @@ main () {
     tiddlywiki "$TW_WIKINAME" --init server
   fi
 
-  exec tiddlywiki "$TW_WIKINAME" --server \
+  tiddlywiki "$TW_WIKINAME" --server \
     "$TW_PORT" \
     "$TW_ROOTTIDDLER" \
     "$TW_RENDERTYPE" \
