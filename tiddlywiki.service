@@ -4,9 +4,13 @@ After=docker.service
 Requires=docker.service
 
 [Service]
-TimeoutStartSec=0
 Restart=always
+RestartSec=5
+TimeoutStartSec=60
+StandardOutput=syslog
+StandardError=syslog
+SyslogIdentifier=%n
 ExecStartPre=-/usr/bin/docker stop %n
 ExecStartPre=-/usr/bin/docker rm %n
 ExecStartPre=/usr/bin/docker pull nicolaw/tiddlywiki
-ExecStart=/usr/bin/docker run --name %n nicolaw/tiddlywiki
+ExecStart=/usr/bin/docker run -p 8080:8080 --name %n nicolaw/tiddlywiki
