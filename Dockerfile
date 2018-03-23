@@ -21,4 +21,4 @@ ENV TW_HOST 0.0.0.0
 ENV TW_PATHPREFIX ""
 
 ADD init-and-run /usr/local/bin/init-and-run
-CMD ["/usr/local/bin/init-and-run"]
+CMD ["init-and-run"]
