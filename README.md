@@ -49,7 +49,8 @@ Refer to the canonical online documentation for help for additional help.
 * https://tiddlywiki.com/static/ServerCommand.html
 
 ```
-TW_USERNAME="anonymous"
+TW_DOCKERVOLUME="/home/janedoe/tiddlywiki"
+TW_USERNAME="janedoe"
 TW_PASSWORD=""
 TW_PORT="8080"
 TW_WIKINAME="mywiki"
