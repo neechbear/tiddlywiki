@@ -20,7 +20,9 @@ $ docker run -p 8080:8080 \
 ## SystemD Service
 
 ```
+$ sudo mkdir /etc/tiddlywiki/
 $ sudo cp tiddlywiki.service /etc/systemd/system/
+$ sudo cp tiddlywiki.service.conf /etc/tiddlywiki/
 $ sudo systemctl daemon-reload
 $ sudo systemctl enable tiddlywiki.service
 $ sudo systemctl start tiddlywiki.service
@@ -30,23 +32,11 @@ $ sudo journalctl -u tiddlywiki.service
 
 ### SystemD with Custom Username
 
-As above, but you will need to modify the `tiddlywiki.service` file to add an
-`--env-file` argument to the `ExecStart=/usr/sbin/docker` command (all on one
-line):
+Uncomment the `TW_USERNAME` and/or `TW_PASSWORD` lines from the
+`/etc/tiddlywiki/tiddlywiki.service.conf` file, and change as necessary.
 
 ```
-ExecStart=/usr/bin/docker run -p 8080:8080 --env-file /etc/tiddlywiki/%n.conf -v
-%n:/var/lib/tiddlywiki --name %n nicolaw/tiddlywiki
+$ sudo vi /etc/tiddlywiki/tiddlywiki.service.conf
+$ sudo systemctl daemon-reload
+$ sudo systemctl restart tiddlywiki.service
 ```
-
-You can then place your username and password into a configration file of the
-same name as the systemd service:
-
-```
-$ mkdir -p /etc/tiddlywiki/
-$ cat << 'EOF' > /etc/tiddlywiki/tiddlywiki.service.conf
-TW_USERNAME=janedoe
-TW_PASSWORD=bashrulesok
-EOF
-```
-
