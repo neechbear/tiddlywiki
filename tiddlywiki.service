@@ -12,9 +12,11 @@ StandardError=syslog
 SyslogIdentifier=%n
 Environment="TW_PORT=8080"
 Environment="TW_DOCKERVOLUME=%n"
+Environment="TW_DOCKERUID=0"
+Environment="TW_DOCKERGID=0"
 EnvironmentFile=/etc/tiddlywiki/%n.conf
 ExecStartPre=-/usr/bin/docker stop %n
 ExecStartPre=-/usr/bin/docker rm %n
 ExecStartPre=/usr/bin/docker pull nicolaw/tiddlywiki
-ExecStart=/usr/bin/docker run -p ${TW_PORT}:${TW_PORT} -e TW_PORT=${TW_PORT} --env-file /etc/tiddlywiki/%n.conf -v ${TW_DOCKERVOLUME}:/var/lib/tiddlywiki --name %n nicolaw/tiddlywiki
+ExecStart=/usr/bin/docker run -p ${TW_PORT}:${TW_PORT} -e TW_PORT=${TW_PORT} --env-file /etc/tiddlywiki/%n.conf --user ${TW_DOCKERUID}:${TW_DOCKERGID} -v ${TW_DOCKERVOLUME}:/var/lib/tiddlywiki --name %n nicolaw/tiddlywiki
 ExecStop=-/usr/bin/docker stop %n

@@ -49,6 +49,8 @@ Refer to the canonical online documentation for help for additional help.
 
 ```
 TW_DOCKERVOLUME=/home/janedoe/tiddlywiki
+TW_DOCKERUID=0
+TW_DOCKERGID=0
 TW_USERNAME=janedoe
 TW_PASSWORD=
 TW_PORT=8080
