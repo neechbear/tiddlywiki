@@ -17,3 +17,4 @@ ExecStartPre=-/usr/bin/docker stop %n
 ExecStartPre=-/usr/bin/docker rm %n
 ExecStartPre=/usr/bin/docker pull nicolaw/tiddlywiki
 ExecStart=/usr/bin/docker run -p ${TW_PORT}:${TW_PORT} -e TW_PORT=${TW_PORT} --env-file /etc/tiddlywiki/%n.conf -v ${TW_DOCKERVOLUME}:/var/lib/tiddlywiki --name %n nicolaw/tiddlywiki
+ExecStop=-/usr/bin/docker stop %n
