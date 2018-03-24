@@ -9,11 +9,6 @@
 set -e
 
 main () {
-  TW_WIKINAME="$1"
-  if [ -z "$TW_WIKINAME" ]; then
-    TW_WIKINAME="mywiki"
-  fi
-
   if [ ! -d "/var/lib/tiddlywiki/$TW_WIKINAME" ]; then
     tiddlywiki "$TW_WIKINAME" --init server
   fi
