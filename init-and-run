@@ -25,7 +25,7 @@ main () {
     /usr/bin/env node "$TW5" "$TW_WIKINAME" --init server
   fi
 
-  exec /usr/bin/env node "$TW5" "$TW_WIKINAME" --server \
+  exec /usr/bin/env node $NODE_OPTIONS "$TW5" "$TW_WIKINAME" --server \
     "$TW_PORT" \
     "$TW_ROOTTIDDLER" \
     "$TW_RENDERTYPE" \
