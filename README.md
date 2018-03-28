@@ -26,7 +26,7 @@ Open your browser to http://localhost:8080 to access the TiddlyWiki.
 ## Systemd Service
 
 A systemd service unit file is included in the source repository of this
-project. (See https://github.com/neechbear/tiddlywiki). This can be installed to
+project. (See https://github.com/neechbear/tiddlywiki ). This can be installed to
 automatically start one or more TiddlyWikis every time your machine boots.
 
 It also provides you with some level of configurability by simply changing the
@@ -57,7 +57,7 @@ Specifying a volume bind mount location for `/var/lib/tiddlywiki` will cause the
 Tiddler data to be written to that location on your local filesystem.
 
 ```
-$ docker run -p 8080:8080 -v "$HOME/tiddlywiki:/var/lib/tiddlyiki" \
+$ docker run -p 8080:8080 -v "$HOME/wikidata:/var/lib/tiddlyiki" \
     --name mywiki nicolaw/tiddlywiki
 ```
 
