@@ -8,8 +8,8 @@ https://github.com/neechbear/tiddlywiki-gce.
 ## Requirements
 
 1. Install Docker. See https://docs.docker.com/install/ for help. For lazy and
-   [non-security minded Linux users](http://rootme.sh), simply run the following
-   command: `curl -fsSL get.docker.com | sudo bash`
+   non-security minded Linux users, simply run the following command:
+   `curl -fsSL get.docker.com | sudo bash`
 
 2. If you want to automatically start TiddlyWiki on boot, you will need to be
    running a recent Linux distribution that uses systemd. (Ubuntu 12 or older,
@@ -57,7 +57,7 @@ Specifying a volume bind mount location for `/var/lib/tiddlywiki` will cause the
 Tiddler data to be written to that location on your local filesystem.
 
 ```
-$ docker run -p 8080:8080 -v "$HOME/wikidata:/var/lib/tiddlyiki" \
+$ docker run --rm -p 8080:8080 -v "$HOME/wikidata:/var/lib/tiddlyiki" \
     --name mywiki nicolaw/tiddlywiki
 ```
 
@@ -143,13 +143,14 @@ TW_DOCKERGID=0
 
 ## Author
 
-Nicola Worthington <nicolaw@tfb.net>, https://nicolaw.uk.
+Nicola Worthington <nicolaw@tfb.net>, https://nicolaw.uk,
+https://nicolaw.uk/#TiddlyWiki.
 
 ## License
 
 MIT License
 
-Copyright (c) 2018 Nicola Worthington
+Copyright (c) 2018-2020 Nicola Worthington
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
