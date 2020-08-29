@@ -35,7 +35,7 @@ contents of the `/etc/tiddlywiki/mywiki.service.conf` configuration file.
 ```
 $ sudo mkdir /etc/tiddlywiki/
 $ sudo cp tiddlywiki.service /etc/systemd/system/mywiki.service
-$ sudo cp tiddlywiki.service.conf /etc/tiddlywiki/mywiki.service
+$ sudo cp tiddlywiki.service.conf /etc/tiddlywiki/mywiki.service.conf
 $ sudo systemctl daemon-reload
 $ sudo systemctl start mywiki.service
 ```
