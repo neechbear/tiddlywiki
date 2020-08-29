@@ -1,6 +1,6 @@
 # tiddlywiki
 
-TiddlyWiki 5 Docker image.
+[TiddlyWiki 5](https://tiddlywiki.com) Docker image.
 
 Google Cloud users may also be interested in
 https://github.com/neechbear/tiddlywiki-gce.
@@ -22,6 +22,18 @@ $ docker run -p 8080:8080 --name mywiki nicolaw/tiddlywiki
 ```
 
 Open your browser to http://localhost:8080 to access the TiddlyWiki.
+
+Alternatively the following will instruct Docker to keep your TiddlyWiki
+container running at all times untill explicitly stopped with a `docker stop` or
+`docker kill` command:
+
+```
+$ mkdir ~/tiddlywiki
+$ docker run \
+    -p 8080:8080 -d --restart unless-stopped --name mywiki \
+    -v ~/tiddlywiki:/var/lib/tiddlywiki
+    nicolaw/tiddlywiki
+```
 
 ## Systemd Service
 
@@ -57,8 +69,7 @@ Specifying a volume bind mount location for `/var/lib/tiddlywiki` will cause the
 Tiddler data to be written to that location on your local filesystem.
 
 ```
-$ docker run --rm -p 8080:8080 -v "$HOME/wikidata:/var/lib/tiddlyiki" \
-    --name mywiki nicolaw/tiddlywiki
+$ docker run --rm -p 8080:8080 -v ~/wikidata:/var/lib/tiddlyiki --name mywiki nicolaw/tiddlywiki
 ```
 
 In the case of operating TiddlyWiki from systemd, the Docker volume has the
@@ -85,8 +96,7 @@ Specify the `TW_USERNAME` and `TW_PASSWORD` environment variables to enable
 password authentication.
 
 ```
-$ docker run -p 8080:8080 -e "TW_USERNAME=$USER" -e "TW_PASSWORD=hunter2" \
-    --name mywiki nicolaw/tiddlywiki
+$ docker run -p 8080:8080 -e "TW_USERNAME=$USER" -e "TW_PASSWORD=hunter2" --name mywiki nicolaw/tiddlywiki
 ```
 
 Similarly if you are using systemd to start your TiddlyWiki, uncomment and

@@ -9,15 +9,20 @@
 ARG BASE_IMAGE=node:14.9.0-alpine3.12
 FROM ${BASE_IMAGE}
 
+ARG BASE_IMAGE=node:14.9.0-alpine3.12
 ARG TW_VERSION=5.1.22
 
 LABEL author="Nicola Worthington <nicolaw@tfb.net>" \
       copyright="Copyright (c) 2017-2020 Nicola Worthington <nicolaw@tfb.net>" \
       homepage="https://nicolaw.uk/#TiddlyWiki" \
+      vcs="https://github.com/NeechBear/tiddlywiki" \
       description="TiddlyWiki - a non-linear personal web notebook" \
       base_image="$BASE_IMAGE" \
       version="$TW_VERSION-$BASE_IMAGE" \
-      com.tiddlywiki.version="$TW_VERSION"
+      com.tiddlywiki.version="$TW_VERSION" \
+      com.tiddlywiki.homepage="https://tiddlywiki.com" \
+      com.tiddlywiki.author="Jeremy Ruston" \
+      com.tiddlywiki.vcs="https://github.com/Jermolene/TiddlyWiki5"
 
 RUN apk add libcap \
  && setcap 'cap_net_bind_service=+ep' /usr/local/bin/node \
