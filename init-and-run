@@ -1,15 +1,20 @@
 #!/bin/sh
+#
 # MIT License
 # Copyright (c) 2017-2020 Nicola Worthington <nicolaw@tfb.net>
-
+#
+# https://nicolaw.uk
+# https://nicolaw.uk/#TiddlyWiki
+#
 # Refer to the canonical online documentation for help:
 # - https://tiddlywiki.com/static/Using%2520TiddlyWiki%2520on%2520Node.js.html
 # - https://tiddlywiki.com/static/ServerCommand.html
-
+#
 # Reign in Node memory consumption:
 # - https://github.com/nodejs/node/issues/2738
 # - https://nodejs.org/api/cli.html#cli_node_options_options
 # - http://fiznool.com/blog/2016/10/01/running-a-node-dot-js-app-in-a-low-memory-environment/
+#
 
 set -e
 
@@ -25,6 +30,7 @@ main () {
     /usr/bin/env node "$TW5" "$TW_WIKINAME" --init server
   fi
 
+  # shellcheck disable=SC2086
   exec /usr/bin/env node $NODE_OPTIONS "$TW5" "$TW_WIKINAME" --server \
     "$TW_PORT" \
     "$TW_ROOTTIDDLER" \
