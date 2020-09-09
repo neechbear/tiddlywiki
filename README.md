@@ -31,7 +31,7 @@ container running at all times untill explicitly stopped with a `docker stop` or
 $ mkdir ~/tiddlywiki
 $ docker run \
     -p 8080:8080 -d --restart unless-stopped --name mywiki \
-    -v ~/tiddlywiki:/var/lib/tiddlywiki
+    -v ~/tiddlywiki:/var/lib/tiddlywiki \
     nicolaw/tiddlywiki
 ```
 
