@@ -10,7 +10,7 @@ ARG BASE_IMAGE=node:14.9.0-alpine3.12
 FROM ${BASE_IMAGE}
 
 ARG BASE_IMAGE=node:14.9.0-alpine3.12
-ARG TW_VERSION=5.1.22
+ARG TW_VERSION=5.1.23
 
 LABEL author="Nicola Worthington <nicolaw@tfb.net>" \
       copyright="Copyright (c) 2017-2020 Nicola Worthington <nicolaw@tfb.net>" \
