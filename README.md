@@ -164,12 +164,13 @@ customised container image using the Git source repostiory as the build context.
 This allows control over the following `Dockerfile` build arguments:
 
 * `TW_VERSION` - The upstream version of TiddlyWiki to install from NPM
-                 (https://www.npmjs.com/package/tiddlywiki)
+  (https://www.npmjs.com/package/tiddlywiki)
+
 * `BASE_IMAGE` - The Docker base container image to inherit from (should
-                 contain the `node` interpreter)
-* `USER`       - Unix user or UID to run the TiddlyWiki process as (useful if
-                 your container runtime environment does not allow you to
-                 override)
+  contain the `node` interpreter)
+
+* `USER` - Unix user or UID to run the TiddlyWiki process as (useful if
+  your container runtime environment does not allow you to override)
 
 The `Makefile` in the https://github.com/neechbear/tiddlywiki.git also makes use
 of these build arguments in a similar way.
