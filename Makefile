@@ -1,6 +1,6 @@
 #
 # MIT License
-# Copyright (c) 2017-2020 Nicola Worthington <nicolaw@tfb.net>
+# Copyright (c) 2017-2021 Nicola Worthington <nicolaw@tfb.net>
 #
 # https://nicolaw.uk
 # https://nicolaw.uk/#TiddlyWiki
@@ -9,9 +9,10 @@
 .PHONY: build push
 .DEFAULT_GOAL := build
 
-TW_VERSION = 5.1.22
-BASE_IMAGE = node:14.9.0-alpine3.12
+TW_VERSION = 5.2.0
+BASE_IMAGE = node:17.0-alpine3.13
 REPOSITORY = nicolaw/tiddlywiki
+USER       = node
 
 IMAGE_TAGS = $(REPOSITORY):$(TW_VERSION) \
 	           $(REPOSITORY):$(TW_VERSION)-$(subst /,,$(subst :,,$(BASE_IMAGE))) \
@@ -24,6 +25,7 @@ build:
 	  --no-cache \
 	  --build-arg TW_VERSION=$(TW_VERSION) \
 	  --build-arg BASE_IMAGE=$(BASE_IMAGE) \
+	  --build-arg USER=$(USER) \
 	  -f Dockerfile \
 	  $(addprefix -t ,$(IMAGE_TAGS)) \
 	  $(MAKEFILE_DIR)

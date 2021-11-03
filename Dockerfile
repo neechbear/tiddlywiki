@@ -6,14 +6,15 @@
 # https://nicolaw.uk/#TiddlyWiki
 #
 
-ARG BASE_IMAGE=node:14.9.0-alpine3.12
+ARG BASE_IMAGE=node:17.0-alpine3.13
 FROM ${BASE_IMAGE}
 
-ARG BASE_IMAGE=node:14.9.0-alpine3.12
-ARG TW_VERSION=5.1.23
+ARG BASE_IMAGE=node:17.0-alpine3.13
+ARG TW_VERSION=5.2.0
+ARG USER=node
 
 LABEL author="Nicola Worthington <nicolaw@tfb.net>" \
-      copyright="Copyright (c) 2017-2020 Nicola Worthington <nicolaw@tfb.net>" \
+      copyright="Copyright (c) 2017-2021 Nicola Worthington <nicolaw@tfb.net>" \
       homepage="https://nicolaw.uk/#TiddlyWiki" \
       vcs="https://github.com/NeechBear/tiddlywiki" \
       description="TiddlyWiki - a non-linear personal web notebook" \
@@ -33,7 +34,7 @@ RUN apk del libc-utils musl-utils scanelf apk-tools \
  && find ~root/ ~node/ -mindepth 1 -delete
 
 RUN mkdir -p /var/lib/tiddlywiki \
- && chown -R node:node /var/lib/tiddlywiki
+ && chown -R ${USER}:${USER} /var/lib/tiddlywiki
 VOLUME /var/lib/tiddlywiki
 WORKDIR /var/lib/tiddlywiki
 
@@ -53,6 +54,6 @@ EXPOSE 8080/tcp
 
 ADD init-and-run /usr/local/bin/init-and-run
 
-USER node
+USER ${USER}
 CMD ["/bin/sh","/usr/local/bin/init-and-run"]
 

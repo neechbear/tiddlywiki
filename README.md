@@ -5,6 +5,12 @@
 Google Cloud users may also be interested in
 https://github.com/neechbear/tiddlywiki-gce.
 
+## Supported Tags
+
+* `5.2.0`, `5.2.0-node17.0-alpine3.13`
+* `5.1.23`, `5.1.23-node14.18.1-alpine3.14`
+* `5.1.22`, `5.1.22-node14.9.0-alpine3.12`
+
 ## Requirements
 
 1. Install Docker. See https://docs.docker.com/install/ for help. For lazy and
@@ -151,6 +157,37 @@ TW_DOCKERUID=0
 TW_DOCKERGID=0
 ```
 
+## Docker Compose
+
+More experienced users may wish to use `docker-compose` to dynamically build a
+customised container image using the Git source repostiory as the build context.
+This allows control over the following `Dockerfile` build arguments:
+
+* `TW_VERSION` - The upstream version of TiddlyWiki to install from NPM
+                 (https://www.npmjs.com/package/tiddlywiki)
+* `BASE_IMAGE` - The Docker base container image to inherit from (should
+                 contain the `node` interpreter)
+* `USER`       - Unix user or UID to run the TiddlyWiki process as (useful if
+                 your container runtime environment does not allow you to
+                 override)
+
+The `Makefile` in the https://github.com/neechbear/tiddlywiki.git also makes use
+of these build arguments in a similar way.
+
+Example [Docker compose](https://docs.docker.com/compose/) definition:
+
+```
+tiddlywiki:
+   container_name: tiddlywiki
+   image: nicolaw/tiddlywiki
+   build:
+     context: https://github.com/neechbear/tiddlywiki.git
+     args:
+       TW_VERSION: 5.1.23
+       USER: 501
+       BASE_IMAGE: 14-alpine3.12
+````
+
 ## Author
 
 Nicola Worthington <nicolaw@tfb.net>, https://nicolaw.uk,
@@ -160,7 +197,7 @@ https://nicolaw.uk/#TiddlyWiki.
 
 MIT License
 
-Copyright (c) 2018-2020 Nicola Worthington
+Copyright (c) 2018-2021 Nicola Worthington
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
